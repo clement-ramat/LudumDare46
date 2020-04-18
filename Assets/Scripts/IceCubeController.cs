@@ -34,7 +34,7 @@ public class IceCubeController : MonoBehaviour
 
             // if changing direction
             if (_goingRight) UpdateSideVelocity(0.2f);
-            
+
             _goingLeft = true;
             _goingRight = false;
         }
@@ -50,9 +50,14 @@ public class IceCubeController : MonoBehaviour
             _goingLeft = false;
             _goingRight = true;
         }
+        else
+        {
+            if(_goingLeft) _rotAmount += Time.deltaTime;
+            if(_goingRight) _rotAmount -= Time.deltaTime;
+        }
 
         // movements
-        _rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 30, Vector3.forward));
+        _rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
         _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed));   
     }
 
@@ -68,6 +73,14 @@ public class IceCubeController : MonoBehaviour
         return v.magnitude;
 
         //return _rb.velocity.magnitude;
+    }
+
+    public void FullReset()
+    {
+        _rotAmount = 0;
+        _goingLeft = _goingRight = false;
+        _rb.velocity = Vector3.zero;
+        _rb.rotation = Quaternion.identity;
     }
 }
 
