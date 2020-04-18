@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class IceCubeController : MonoBehaviour
 {
-    private CharacterController _controller;
+    private Rigidbody _rb;
+    
+    [SerializeField]
+    private float horizontalSpeed = 10f;
 
     [SerializeField]
-    private float baseSpeed = 10f;
+    private float descentSpeed = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        _controller = GetComponent<CharacterController>();
+        _rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-        _controller.Move(movement * Time.deltaTime * baseSpeed);
+        _rb.AddForce(new Vector3(Input.GetAxis("Horizontal") * horizontalSpeed, 0, descentSpeed));
     }
 }
+
