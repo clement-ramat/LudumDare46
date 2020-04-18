@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
+    serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 0
@@ -312,6 +313,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6957789308287948044, guid: 9370b563434b63d43b62108d61edb2cc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bcc468e622ced92438efd8d876832310, type: 2}
     - target: {fileID: 6957789308287948046, guid: 9370b563434b63d43b62108d61edb2cc,
         type: 3}
       propertyPath: m_Name
@@ -375,7 +381,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98661bc9bf944d54daaeec716ba868dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -713,6 +719,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1555384688}
+    - target: {fileID: 8504815052382354813, guid: 8d0085e104e452b4bae093d72e615262,
+        type: 3}
+      propertyPath: cameraSpeed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8504815052382354814, guid: 8d0085e104e452b4bae093d72e615262,
         type: 3}
       propertyPath: m_LocalPosition.x

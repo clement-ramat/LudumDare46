@@ -10,13 +10,15 @@ public class IceCubeController : MonoBehaviour
     [SerializeField]
     private float descentSpeed = 1f;
 
-    private float rot;
+    private float _rotAmount;
+    private bool _goingLeft, _goingRight;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        rot = 0;
+        _rotAmount = 0;
+        _goingLeft = _goingRight = false;
     }
 
     // Update is called once per frame
@@ -24,14 +26,39 @@ public class IceCubeController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed));
+        // barrel roll
+        // Going to the left
+        if (horizontalInput < 0)
+        {
+            _rotAmount += Time.deltaTime;
 
-        rot += Time.deltaTime;
+            // if changing direction
+            if (_goingRight) UpdateSideVelocity(0.2f);
+            
+            _goingLeft = true;
+            _goingRight = false;
+        }
 
-        if(horizontalInput < 0) _rb.MoveRotation(Quaternion.AngleAxis(180 * rot, Vector3.forward));
-        else if(horizontalInput > 0) _rb.MoveRotation(Quaternion.AngleAxis(180 * rot * -1, Vector3.forward));
+        // Going to the right
+        else if (horizontalInput > 0)
+        {
+            _rotAmount -= Time.deltaTime;
 
+            // if changing direction
+            if (_goingLeft) UpdateSideVelocity(0.2f);
 
+            _goingLeft = false;
+            _goingRight = true;
+        }
+
+        // movements
+        _rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 30, Vector3.forward));
+        _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed));   
+    }
+
+    private void UpdateSideVelocity(float factor)
+    {
+        _rb.velocity = new Vector3(_rb.velocity.x * factor, _rb.velocity.y, _rb.velocity.z);
     }
 
     public float GetCurrentVelocity()
