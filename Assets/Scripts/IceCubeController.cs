@@ -58,7 +58,6 @@ public class IceCubeController : MonoBehaviour
 
         // movements
         _rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
-
         _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed));   
     }
 
@@ -74,6 +73,14 @@ public class IceCubeController : MonoBehaviour
         return v.magnitude;
 
         //return _rb.velocity.magnitude;
+    }
+
+    public void FullReset()
+    {
+        _rotAmount = 0;
+        _goingLeft = _goingRight = false;
+        _rb.velocity = Vector3.zero;
+        _rb.rotation = Quaternion.identity;
     }
 }
 
