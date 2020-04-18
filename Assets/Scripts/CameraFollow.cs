@@ -14,11 +14,29 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private float highspeedThreshold = 20f;
 
+    [SerializeField]
+    private float baseFov = 60;
+
+    [SerializeField]
+    private float highspeedFov = 70;
+
+    [SerializeField]
+    private float _fovTransitionFactor = 0.5f;
+
+    private float _currentFov;
+    private float _fovTransition;
+    
+
     private ParticleSystem _ps;
+    private Camera _c;
 
     private void Start()
     {
         _ps = GetComponent<ParticleSystem>();
+        _c = GetComponent<Camera>();
+        _currentFov = baseFov;
+        _c.fieldOfView = baseFov;
+        _fovTransition = 0;
     }
 
     // Update is called once per frame
@@ -32,9 +50,20 @@ public class CameraFollow : MonoBehaviour
         {
            if(!_ps.isPlaying) _ps.Play();
 
-        }else if(_ps.isPlaying)
+            _fovTransition += Time.deltaTime * _fovTransitionFactor;
+            _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
+
+            _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
+
+        }
+        else if(_ps.isPlaying)
         {
             _ps.Stop();
+
+            _fovTransition -= Time.deltaTime * _fovTransitionFactor;
+            _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
+
+            _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
         }
     }
 
