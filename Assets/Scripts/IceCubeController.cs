@@ -21,4 +21,14 @@ public class IceCubeController : MonoBehaviour
     {
         _rb.AddForce(new Vector3(Input.GetAxis("Horizontal") * horizontalSpeed, 0, descentSpeed));
     }
+
+    public float GetCurrentVelocity()
+    {
+        // descent velocity, not taking into account horizontal velocity
+        Vector3 v = new Vector3(0, 0 , _rb.velocity.z);
+        return v.magnitude;
+
+        //return _rb.velocity.magnitude;
+    }
 }
+
