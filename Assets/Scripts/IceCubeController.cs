@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class IceCubeController : MonoBehaviour
 {
@@ -24,4 +22,3 @@ public class IceCubeController : MonoBehaviour
         _rb.AddForce(new Vector3(Input.GetAxis("Horizontal") * horizontalSpeed, 0, descentSpeed));
     }
 }
-
