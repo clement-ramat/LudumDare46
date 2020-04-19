@@ -35,7 +35,14 @@ public class GoalManager : MonoBehaviour
     private IEnumerator GoalReached()
     {
         spawnData.CurrentCamera.GetComponent<CameraFollow>().StopFollowing();
-        spawnData.CurrentCamera.GetComponent<CameraFollow>().EnableGlassView();
+        try
+        {
+            spawnData.CurrentCamera.GetComponent<CameraFollow>().EnableGlassView();
+        } catch
+        {
+            Debug.Log("le verre n'as pas été placé !!");
+        }
+       
 
         yield return new WaitForSeconds(waitTimeBeforeChangingScene);
 

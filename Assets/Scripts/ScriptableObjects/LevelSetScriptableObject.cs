@@ -13,7 +13,7 @@ public class LevelSetScriptableObject : ScriptableObject
     [SerializeField]
     private int nbLevels = 1;
 
-    public int currentLevelIndex;
+    public int currentLevelIndex = 0;
 
 
     public void LoadNextScene()
@@ -25,6 +25,7 @@ public class LevelSetScriptableObject : ScriptableObject
             currentLevelIndex = levelStartIndex;
         }
 
+        Debug.Log("Loading Scene of index" + levelStartIndex + currentLevelIndex);
         SceneManager.LoadScene(levelStartIndex + currentLevelIndex);
     }
 

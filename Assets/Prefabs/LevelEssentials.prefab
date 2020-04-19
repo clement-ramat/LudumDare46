@@ -217,6 +217,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2330838993689566067}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &8942225690410966411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6647848873294268152, guid: 25b84c7e0aae52c43bb36709e8c22911,
+    type: 3}
+  m_PrefabInstance: {fileID: 2330838993689566067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2330838994137795143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +496,11 @@ PrefabInstance:
       propertyPath: cameraSpeed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8504815052382354813, guid: 8d0085e104e452b4bae093d72e615262,
+        type: 3}
+      propertyPath: glassCam
+      value: 
+      objectReference: {fileID: 8942225690410966411}
     - target: {fileID: 8504815052382354814, guid: 8d0085e104e452b4bae093d72e615262,
         type: 3}
       propertyPath: m_LocalPosition.x
