@@ -22,7 +22,7 @@ public class LevelSetScriptableObject : ScriptableObject
 
         if (currentLevelIndex >= nbLevels)
         {
-            currentLevelIndex = 0;
+            currentLevelIndex = levelStartIndex;
         }
 
         SceneManager.LoadScene(levelStartIndex + currentLevelIndex);
