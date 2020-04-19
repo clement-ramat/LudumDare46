@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IceCubeMelt : MonoBehaviour
 {
@@ -21,7 +22,11 @@ public class IceCubeMelt : MonoBehaviour
     [SerializeField]
     private GameObject collisionParticles;
 
+
     private IceCubeController _icc;
+
+    public UnityEvent OnCollision;
+
 
     [HideInInspector]
     public float currentHealth
@@ -96,6 +101,8 @@ public class IceCubeMelt : MonoBehaviour
             inCollisionObstacle.Add(obstacle);
 
             currentHealth -= obstacle.damage;
+
+            OnCollision?.Invoke();
 
             StartCoroutine(InvincibilityForSeconds(invincibilityDuration));
 
