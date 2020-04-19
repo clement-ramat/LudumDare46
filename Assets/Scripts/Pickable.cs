@@ -2,27 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Pickable : MonoBehaviour
+public class Pickable : MonoBehaviour
 {
-}
-
-public class HealthPickUp : Pickable
-{
-    public float health = 10;
+    [Header("Animation")]
+    public float verticalSpeed;
+    public float verticalOffset;
+    public float angularVelocity;
 
     private void OnTriggerEnter(Collider other)
     {
-        IceCubeMelt icm = other.GetComponent<IceCubeMelt>();
-
-        if (icm != null)
+        if(other.CompareTag("Player"))
         {
-            icm.currentHealth += health;
+            Effect(other.gameObject);
         }
-
-        PlayPickedUp();
     }
 
-    private void PlayPickedUp()
+    public void Effect(GameObject player)
     {
         Destroy(gameObject);
     }
