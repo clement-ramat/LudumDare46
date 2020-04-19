@@ -30,6 +30,7 @@ public class CameraFollow : MonoBehaviour
     private ParticleSystem _ps;
     private Camera _c;
 
+    private bool follow = true;
     private void Start()
     {
         _ps = GetComponent<ParticleSystem>();
@@ -42,13 +43,17 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Follow the target
-        MoveCamera();
+        if (follow)
+        {
+            // Follow the target
+            MoveCamera();
+        }
+        
 
         // Activate the VFX once a certain speed is reached
         if(GetTargetVelocity() > highspeedThreshold)
         {
-           if(!_ps.isPlaying) _ps.Play();
+           if(!_ps.isPlaying && follow) _ps.Play();
 
             _fovTransition += Time.deltaTime * _fovTransitionFactor;
             _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
@@ -56,7 +61,7 @@ public class CameraFollow : MonoBehaviour
             _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
 
         }
-        else if(_ps.isPlaying)
+        else if(_ps.isPlaying || !follow)
         {
             _ps.Stop();
 
@@ -84,5 +89,11 @@ public class CameraFollow : MonoBehaviour
         }
         
         return 0;
+    }
+
+    public void StopFollowing()
+    {
+        follow = false;
+        _ps.Stop();
     }
 }

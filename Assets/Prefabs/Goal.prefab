@@ -40,10 +40,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8705378456911999199}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 5, z: 1}
+  m_Size: {x: 50, y: 20, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9144603821916075087
 MonoBehaviour:
@@ -58,4 +58,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnData: {fileID: 11400000, guid: 311682e48656e0d4fa94e23efe4727a2, type: 2}
+  levelSet: {fileID: 11400000, guid: 647264c4444a4c943b4f771db6cfad80, type: 2}
   tagToCheck: Player
+  waitTimeBeforeChangingScene: 3
