@@ -13,7 +13,7 @@ public class LevelSetScriptableObject : ScriptableObject
     [SerializeField]
     private int nbLevels = 1;
 
-    public int currentLevelIndex;
+    public int currentLevelIndex = 0;
 
 
     public void LoadNextScene()
