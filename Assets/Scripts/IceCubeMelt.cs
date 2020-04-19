@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class IceCubeMelt : MonoBehaviour
 {
-    private float startScale;
+    private float maxScale;
+    public float minimumScale = 20;
+
     public float maxHealth = 100;
 
     [SerializeField]
@@ -12,7 +14,8 @@ public class IceCubeMelt : MonoBehaviour
     private bool invincible = false;
 
     private List<Obstacle> inCollisionObstacle = new List<Obstacle>();
-
+    [HideInInspector]
+    public List<MeltingZone> meltingZones = new List<MeltingZone>();
     public float invincibilityDuration = 5f;
 
     [HideInInspector]
@@ -24,23 +27,42 @@ public class IceCubeMelt : MonoBehaviour
         }
         set
         {
-            if(!invincible)
+            if (value < 0)
             {
-                _currentHealth = value;
+                if (!invincible)
+                {
+                    _currentHealth = value;
+                }
+            }
+            else
+            {
+                if(value > maxHealth)
+                {
+                    _currentHealth = maxHealth;
+                }
+                else
+                {
+                    _currentHealth = value;
+                }
             }
         }
     }
     private void Start()
     {
         currentHealth = maxHealth;
-        startScale = transform.localScale.x;
+        maxScale = transform.localScale.x - minimumScale;
     }
 
     public void Update()
     {
+        foreach (MeltingZone meltingZone in meltingZones)
+        {
+            currentHealth -= meltingZone.damagePerSeconds * Time.deltaTime;
+        }
+
         if (currentHealth != 0)
         {
-            float scale = currentHealth / maxHealth * startScale;
+            float scale = minimumScale + (currentHealth / maxHealth * maxScale);
             transform.localScale = new Vector3(scale, scale, scale);
         }
     }
@@ -55,7 +77,6 @@ public class IceCubeMelt : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
-
 
         if (obstacle != null && !inCollisionObstacle.Contains(obstacle))
         {
@@ -85,4 +106,6 @@ public class IceCubeMelt : MonoBehaviour
             inCollisionObstacle.Remove(obstacle);
         }
     }
+
+
 }
