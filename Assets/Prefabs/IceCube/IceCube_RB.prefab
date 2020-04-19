@@ -159,7 +159,8 @@ MonoBehaviour:
   _currentHealth: 0
   meltingZones: []
   invincibilityDuration: 5
-  collisionParticles: {fileID: 0}
+  collisionParticles: {fileID: 5500208828623928649, guid: 8d660cbc5f95b754b843a200160e3979,
+    type: 3}
 --- !u!1001 &6050999380120225832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,4 +241,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6050999380120225832}
   m_PrefabAsset: {fileID: 0}
-
