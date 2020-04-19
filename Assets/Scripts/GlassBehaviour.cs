@@ -11,7 +11,7 @@ public class GlassBehaviour : MonoBehaviour
         if(icc != null)
         {
             icc.FullReset();
-            icc.StopSimulation();
+            icc.EnableSimulation(false);
 
             other.GetComponent<EnableThugLife>().Activate();
         }

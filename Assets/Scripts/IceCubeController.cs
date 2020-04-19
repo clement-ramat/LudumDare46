@@ -19,7 +19,7 @@ public class IceCubeController : MonoBehaviour
     private bool enableSimulation = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _rotAmount = 0;
@@ -94,9 +94,9 @@ public class IceCubeController : MonoBehaviour
         _rb.rotation = Quaternion.identity;
     }
 
-    public void StopSimulation()
+    public void EnableSimulation(bool b)
     {
-        enableSimulation = false;
+        enableSimulation = b;
     }
 
     private void LimitVelocity(float limit)
@@ -115,6 +115,11 @@ public class IceCubeController : MonoBehaviour
         {
             _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, newValue);
         }
+    }
+
+    public void EnableGravity(bool b)
+    {
+        _rb.useGravity = b;
     }
 }
 
