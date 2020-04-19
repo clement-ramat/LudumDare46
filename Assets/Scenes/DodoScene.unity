@@ -459,6 +459,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 9144603821916075087, guid: 25b84c7e0aae52c43bb36709e8c22911,
+        type: 3}
+      propertyPath: waitTimeBeforeChangingScene
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b84c7e0aae52c43bb36709e8c22911, type: 3}
 --- !u!1001 &731878456
@@ -786,11 +791,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6957789308287948044, guid: 9370b563434b63d43b62108d61edb2cc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bcc468e622ced92438efd8d876832310, type: 2}
     - target: {fileID: 6957789308287948046, guid: 9370b563434b63d43b62108d61edb2cc,
         type: 3}
       propertyPath: m_Name
