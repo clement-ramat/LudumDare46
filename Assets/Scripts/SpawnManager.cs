@@ -13,7 +13,7 @@ public class SpawnManager : MonoBehaviour
     private Text countdownText;
 
     [SerializeField]
-    private float hidingSpeed = 1f;
+    private int countdownDuration = 3;
 
     private bool hideCountdown = false;
     private float hidingFactor = 0;
@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
 
     void StartGame()
     {
-        StartCoroutine(Countdown(3));
+        StartCoroutine(Countdown(countdownDuration));
     }
 
     IEnumerator Countdown(int seconds)
