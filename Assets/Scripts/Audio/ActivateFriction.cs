@@ -14,6 +14,9 @@ public class ActivateFriction : MonoBehaviour
     [SerializeField]
     private float velocityThreshold = 2f;
 
+    [SerializeField]
+    private float maxVelocity = 10f;
+
     private bool isColliding = false;
 
     private int nbColliding = 0;
@@ -29,7 +32,9 @@ public class ActivateFriction : MonoBehaviour
     {
         if (rbToTrack.velocity.magnitude > velocityThreshold && isColliding)
         {
-            audioSource.volume = 1;
+            //audioSource.volume = 1;
+            //audioSource.volume = rbToTrack.velocity.magnitude / maxVelocity + velocityThreshold;
+            audioSource.volume = Mathf.InverseLerp(velocityThreshold, maxVelocity, rbToTrack.velocity.magnitude);
         } else
         {
             audioSource.volume = 0;
