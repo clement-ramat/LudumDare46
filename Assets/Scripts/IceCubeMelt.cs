@@ -18,6 +18,9 @@ public class IceCubeMelt : MonoBehaviour
     public List<MeltingZone> meltingZones = new List<MeltingZone>();
     public float invincibilityDuration = 5f;
 
+    [SerializeField]
+    private GameObject collisionParticles;
+
     [HideInInspector]
     public float currentHealth
     {
@@ -88,7 +91,7 @@ public class IceCubeMelt : MonoBehaviour
 
             if (currentHealth > 0)
             {
-                //PlayCollisionVisuals();
+                PlayCollisionVisuals();
             }
             else
             {
@@ -104,6 +107,16 @@ public class IceCubeMelt : MonoBehaviour
         if (obstacle != null && inCollisionObstacle.Contains(obstacle))
         {
             inCollisionObstacle.Remove(obstacle);
+        }
+    }
+
+    private void PlayCollisionVisuals()
+    {
+        if (collisionParticles != null)
+        {
+            GameObject go = Instantiate(collisionParticles, transform.position, Quaternion.identity, transform);
+            go.GetComponent<ParticleSystem>().Play();
+            Destroy(go, 1);
         }
     }
 

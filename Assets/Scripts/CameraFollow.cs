@@ -23,6 +23,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private float _fovTransitionFactor = 0.5f;
 
+    [SerializeField]
+    private Transform glassCam;
+
     private float _currentFov;
     private float _fovTransition;
     
@@ -47,29 +50,28 @@ public class CameraFollow : MonoBehaviour
         {
             // Follow the target
             MoveCamera();
-        }
-        
 
-        // Activate the VFX once a certain speed is reached
-        if(GetTargetVelocity() > highspeedThreshold)
-        {
-           if(!_ps.isPlaying && follow) _ps.Play();
+            // Activate the VFX once a certain speed is reached
+            if (GetTargetVelocity() > highspeedThreshold)
+            {
+                if (!_ps.isPlaying && follow) _ps.Play();
 
-            _fovTransition += Time.deltaTime * _fovTransitionFactor;
-            _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
+                _fovTransition += Time.deltaTime * _fovTransitionFactor;
+                _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
 
-            _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
+                _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
 
-        }
-        else if(_ps.isPlaying || !follow)
-        {
-            _ps.Stop();
+            }
+            else if (_ps.isPlaying || !follow)
+            {
+                _ps.Stop();
 
-            _fovTransition -= Time.deltaTime * _fovTransitionFactor;
-            _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
+                _fovTransition -= Time.deltaTime * _fovTransitionFactor;
+                _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
 
-            _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
-        }
+                _c.fieldOfView = Mathf.Lerp(baseFov, highspeedFov, _fovTransition);
+            }
+        }  
     }
 
     private void MoveCamera()
@@ -95,5 +97,11 @@ public class CameraFollow : MonoBehaviour
     {
         follow = false;
         _ps.Stop();
+    }
+
+    public void EnableGlassView()
+    {
+        transform.position = glassCam.position;
+        transform.rotation = glassCam.rotation;
     }
 }
