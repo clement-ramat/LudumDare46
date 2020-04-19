@@ -61,8 +61,8 @@ public class IceCubeController : MonoBehaviour
             }
 
             // movements
-            _rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
-            _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed));
+            //_rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
+            _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed * Time.deltaTime));
         }
     }
 

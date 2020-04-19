@@ -101,11 +101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   cameraSpeed: 6
-  offset: {x: 0, y: 10, z: -6}
-  highspeedThreshold: 30
+  offset: {x: 0, y: 5, z: -10}
+  highspeedThreshold: 25
   baseFov: 60
-  highspeedFov: 70
+  highspeedFov: 80
   _fovTransitionFactor: 0.5
+  glassCam: {fileID: 0}
 --- !u!198 &8504815052382354811
 ParticleSystem:
   m_ObjectHideFlags: 0
