@@ -7,7 +7,13 @@ public class GoalManager : MonoBehaviour
     private SpawnManagerScriptableObject spawnData;
 
     [SerializeField]
+    private LevelSetScriptableObject levelSet;
+
+    [SerializeField]
     private string tagToCheck = "Player";
+
+    [SerializeField]
+    private float waitTimeBeforeChangingScene = 3f;
 
     void Awake()
     {
@@ -33,7 +39,17 @@ public class GoalManager : MonoBehaviour
     {
         if (other.tag == tagToCheck)
         {
-            // TODO
+            Debug.Log("Goal reached");
+            StartCoroutine(GoalReached());
         }
+    }
+
+    private IEnumerator GoalReached()
+    {
+        spawnData.CurrentCamera.GetComponent<CameraFollow>().StopFollowing();
+
+        yield return new WaitForSeconds(waitTimeBeforeChangingScene);
+
+        levelSet.LoadNextScene();
     }
 }
