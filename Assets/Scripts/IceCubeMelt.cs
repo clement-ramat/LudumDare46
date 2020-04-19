@@ -142,7 +142,7 @@ public class IceCubeMelt : MonoBehaviour
     private void BumpPlayer()
     {
         //float currentVelocity = _icc.GetCurrentVelocity();
-        _icc.UpdateSideVelocity(-2f);
+        _icc.UpdateSideVelocity(-10f);
     }
 
 

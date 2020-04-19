@@ -74,7 +74,13 @@ public class IceCubeController : MonoBehaviour
 
     public void UpdateSideVelocity(float factor)
     {
-        _rb.velocity = new Vector3(_rb.velocity.x * factor, _rb.velocity.y, _rb.velocity.z);
+        float newSideVelocity = _rb.velocity.x * factor;
+        float sideLimit = velocityLimit * 0.15f;
+
+        if (newSideVelocity > sideLimit) newSideVelocity = sideLimit;
+        if (newSideVelocity < (sideLimit * -1)) newSideVelocity = sideLimit;
+
+        _rb.velocity = new Vector3(newSideVelocity, _rb.velocity.y, _rb.velocity.z);
     }
 
     public float GetCurrentVelocity()
