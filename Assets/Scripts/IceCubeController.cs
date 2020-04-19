@@ -104,5 +104,14 @@ public class IceCubeController : MonoBehaviour
             _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, limit);
         }
     }
+
+    public void BoostVelocity(float newValue)
+    {
+        float currentVelocity = GetCurrentVelocity();
+        if (currentVelocity < newValue)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, newValue);
+        }
+    }
 }
 
