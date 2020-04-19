@@ -26,6 +26,9 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Transform glassCam;
 
+    [SerializeField]
+    private ShakeCamera cameraShake;
+
     private float _currentFov;
     private float _fovTransition;
     private Vector3 _currentOffset;
@@ -60,7 +63,11 @@ public class CameraFollow : MonoBehaviour
             // Activate the VFX once a certain speed is reached
             if (GetTargetVelocity() > highspeedThreshold)
             {
-                if (!_ps.isPlaying && follow) _ps.Play();
+                if (!_ps.isPlaying && follow)
+                {
+                    _ps.Play();
+                    cameraShake.StartShaking();
+                }
 
                 _fovTransition += Time.deltaTime * _fovTransitionFactor;
                 _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
@@ -71,6 +78,7 @@ public class CameraFollow : MonoBehaviour
             else if (_ps.isPlaying || !follow)
             {
                 _ps.Stop();
+                cameraShake.StopShaking();
 
                 _fovTransition -= Time.deltaTime * _fovTransitionFactor;
                 _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
