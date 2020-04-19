@@ -23,18 +23,6 @@ public class GoalManager : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == tagToCheck)
@@ -47,6 +35,7 @@ public class GoalManager : MonoBehaviour
     private IEnumerator GoalReached()
     {
         spawnData.CurrentCamera.GetComponent<CameraFollow>().StopFollowing();
+        spawnData.CurrentCamera.GetComponent<CameraFollow>().EnableGlassView();
 
         yield return new WaitForSeconds(waitTimeBeforeChangingScene);
 
