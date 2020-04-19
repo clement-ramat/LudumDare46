@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7018661dd89b9e40b65de8e7746527c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumScale: 20
+  minimumScale: 0.2
   maxHealth: 100
   _currentHealth: 0
   meltingZones: []
