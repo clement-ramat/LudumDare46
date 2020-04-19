@@ -111,6 +111,7 @@ public class CameraFollow : MonoBehaviour
     {
         follow = false;
         _ps.Stop();
+        cameraShake.StopShaking();
     }
 
     public void EnableGlassView()

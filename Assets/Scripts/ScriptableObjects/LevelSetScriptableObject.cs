@@ -25,6 +25,7 @@ public class LevelSetScriptableObject : ScriptableObject
             currentLevelIndex = levelStartIndex;
         }
 
+        Debug.Log("Loading Scene of index" + levelStartIndex + currentLevelIndex);
         SceneManager.LoadScene(levelStartIndex + currentLevelIndex);
     }
 
