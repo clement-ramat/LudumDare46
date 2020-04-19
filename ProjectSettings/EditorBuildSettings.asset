@@ -7,8 +7,8 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: 1eb7217bd321c114ca23370303826e11
+    guid: 5013aeea650957747ad4b60c3fd87a28
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Pente.unity
+    guid: 0a54792e8ff1081409e002b77deab813
   m_configObjects: {}
