@@ -12,6 +12,9 @@ public class SpeedPickUp : Pickable
     {
         float newVelocity = player.GetComponent<IceCubeController>().GetCurrentVelocity() * bonus;
         player.GetComponent<IceCubeController>().BoostVelocity(newVelocity);
+
+        player.GetComponent<IceCubePickup>().PlayEffect();
+
         Destroy(gameObject);
     }
 }
