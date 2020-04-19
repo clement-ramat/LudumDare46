@@ -7,7 +7,13 @@ public class GoalManager : MonoBehaviour
     private SpawnManagerScriptableObject spawnData;
 
     [SerializeField]
+    private LevelSetScriptableObject levelSet;
+
+    [SerializeField]
     private string tagToCheck = "Player";
+
+    [SerializeField]
+    private float waitTimeBeforeChangingScene = 3f;
 
     void Awake()
     {
@@ -17,23 +23,22 @@ public class GoalManager : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == tagToCheck)
         {
-            // TODO
+            Debug.Log("Goal reached");
+            StartCoroutine(GoalReached());
         }
+    }
+
+    private IEnumerator GoalReached()
+    {
+        spawnData.CurrentCamera.GetComponent<CameraFollow>().StopFollowing();
+        spawnData.CurrentCamera.GetComponent<CameraFollow>().EnableGlassView();
+
+        yield return new WaitForSeconds(waitTimeBeforeChangingScene);
+
+        levelSet.LoadNextScene();
     }
 }

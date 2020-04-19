@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class IceCubeMelt : MonoBehaviour
 {
-    private float startScale;
+    private float maxScale;
+    public float minimumScale = 0.2f;
+
     public float maxHealth = 100;
 
     [SerializeField]
@@ -12,8 +14,12 @@ public class IceCubeMelt : MonoBehaviour
     private bool invincible = false;
 
     private List<Obstacle> inCollisionObstacle = new List<Obstacle>();
-
+    [HideInInspector]
+    public List<MeltingZone> meltingZones = new List<MeltingZone>();
     public float invincibilityDuration = 5f;
+
+    [SerializeField]
+    private GameObject collisionParticles;
 
     [HideInInspector]
     public float currentHealth
@@ -24,23 +30,48 @@ public class IceCubeMelt : MonoBehaviour
         }
         set
         {
-            if(!invincible)
+            if (value < _currentHealth)
             {
-                _currentHealth = value;
+                if (!invincible)
+                {
+                    Debug.Log("took damage");
+
+                    _currentHealth = value;
+                }
+                else
+                {
+                    Debug.Log("took damage but invincible");
+                }
+            }
+            else
+            {
+                if(value > maxHealth)
+                {
+                    _currentHealth = maxHealth;
+                }
+                else
+                {
+                    _currentHealth = value;
+                }
             }
         }
     }
     private void Start()
     {
         currentHealth = maxHealth;
-        startScale = transform.localScale.x;
+        maxScale = transform.localScale.x - minimumScale;
     }
 
     public void Update()
     {
+        foreach (MeltingZone meltingZone in meltingZones)
+        {
+            currentHealth -= meltingZone.damagePerSeconds * Time.deltaTime;
+        }
+
         if (currentHealth != 0)
         {
-            float scale = currentHealth / maxHealth * startScale;
+            float scale = minimumScale + (currentHealth / maxHealth * maxScale);
             transform.localScale = new Vector3(scale, scale, scale);
         }
     }
@@ -56,9 +87,9 @@ public class IceCubeMelt : MonoBehaviour
     {
         Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
 
-
         if (obstacle != null && !inCollisionObstacle.Contains(obstacle))
         {
+            Debug.Log("collision");
             inCollisionObstacle.Add(obstacle);
 
             currentHealth -= obstacle.damage;
@@ -67,7 +98,7 @@ public class IceCubeMelt : MonoBehaviour
 
             if (currentHealth > 0)
             {
-                //PlayCollisionVisuals();
+                PlayCollisionVisuals();
             }
             else
             {
@@ -85,4 +116,16 @@ public class IceCubeMelt : MonoBehaviour
             inCollisionObstacle.Remove(obstacle);
         }
     }
+
+    private void PlayCollisionVisuals()
+    {
+        if (collisionParticles != null)
+        {
+            GameObject go = Instantiate(collisionParticles, transform.position, Quaternion.identity, transform);
+            go.GetComponent<ParticleSystem>().Play();
+            Destroy(go, 1);
+        }
+    }
+
+
 }
