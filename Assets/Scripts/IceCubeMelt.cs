@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class IceCubeMelt : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class IceCubeMelt : MonoBehaviour
 
     [SerializeField]
     private GameObject collisionParticles;
+
+
+    private IceCubeController _icc;
+
+    public UnityEvent OnCollision;
+
 
     [HideInInspector]
     public float currentHealth
@@ -60,6 +67,7 @@ public class IceCubeMelt : MonoBehaviour
     {
         currentHealth = maxHealth;
         maxScale = transform.localScale.x - minimumScale;
+        _icc = GetComponent<IceCubeController>();
     }
 
     public void Update()
@@ -94,7 +102,11 @@ public class IceCubeMelt : MonoBehaviour
 
             currentHealth -= obstacle.damage;
 
+            OnCollision?.Invoke();
+
             StartCoroutine(InvincibilityForSeconds(invincibilityDuration));
+
+            BumpPlayer();
 
             if (currentHealth > 0)
             {
@@ -125,6 +137,12 @@ public class IceCubeMelt : MonoBehaviour
             go.GetComponent<ParticleSystem>().Play();
             Destroy(go, 1);
         }
+    }
+
+    private void BumpPlayer()
+    {
+        //float currentVelocity = _icc.GetCurrentVelocity();
+        _icc.UpdateSideVelocity(-2f);
     }
 
 

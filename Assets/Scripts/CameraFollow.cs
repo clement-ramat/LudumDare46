@@ -26,8 +26,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private Transform glassCam;
 
+    [SerializeField]
+    private ShakeCamera cameraShake;
+
     private float _currentFov;
     private float _fovTransition;
+    private Vector3 _currentOffset;
     
 
     private ParticleSystem _ps;
@@ -48,13 +52,22 @@ public class CameraFollow : MonoBehaviour
     {
         if (follow)
         {
+            // Get current life and adjust offset (because the ice cube's size is reduced)
+            float currentHealth = target.GetComponent<IceCubeMelt>().currentHealth;
+            if (currentHealth <= 20) currentHealth = 20;
+            _currentOffset = offset * (currentHealth * 0.01f);
+
             // Follow the target
             MoveCamera();
 
             // Activate the VFX once a certain speed is reached
             if (GetTargetVelocity() > highspeedThreshold)
             {
-                if (!_ps.isPlaying && follow) _ps.Play();
+                if (!_ps.isPlaying && follow)
+                {
+                    _ps.Play();
+                    cameraShake.StartShaking();
+                }
 
                 _fovTransition += Time.deltaTime * _fovTransitionFactor;
                 _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
@@ -65,6 +78,7 @@ public class CameraFollow : MonoBehaviour
             else if (_ps.isPlaying || !follow)
             {
                 _ps.Stop();
+                cameraShake.StopShaking();
 
                 _fovTransition -= Time.deltaTime * _fovTransitionFactor;
                 _fovTransition = Mathf.Clamp(_fovTransition, 0.0f, 1.0f);
@@ -76,7 +90,7 @@ public class CameraFollow : MonoBehaviour
 
     private void MoveCamera()
     {
-        Vector3 desiredPos = target.transform.position + offset;
+        Vector3 desiredPos = target.transform.position + _currentOffset;
         Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, cameraSpeed * Time.deltaTime);
 
         transform.position = smoothPos;
@@ -101,6 +115,7 @@ public class CameraFollow : MonoBehaviour
 
     public void EnableGlassView()
     {
+        _c.fieldOfView = baseFov;
         transform.position = glassCam.position;
         transform.rotation = glassCam.rotation;
     }
