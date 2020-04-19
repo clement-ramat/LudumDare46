@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6957789308287948045}
   - component: {fileID: 6957789308287947505}
   - component: {fileID: 1502602866}
+  - component: {fileID: 1555384695}
   m_Layer: 0
   m_Name: IceCube_RB
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 05e45c875881f3947be4b27144582369, type: 2}
+  - {fileID: 2100000, guid: bcc468e622ced92438efd8d876832310, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,3 +126,22 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1555384695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957789308287948046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696940a468766eb4eb205dfdd03afb44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumScale: 20
+  maxHealth: 100
+  _currentHealth: 0
+  meltingZones: []
+  invincibilityDuration: 5
+  collisionParticles: {fileID: 4547095786824378147, guid: d56af1eda3067034e92d9ad012115504,
+    type: 3}
