@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   cameraSpeed: 6
-  offset: {x: 0, y: 5, z: -10}
+  offset: {x: 0, y: 10, z: -10}
   highspeedThreshold: 25
   baseFov: 60
   highspeedFov: 80
