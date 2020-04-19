@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6957789308287947505}
   - component: {fileID: 1502602866}
   - component: {fileID: 1555384689}
+  - component: {fileID: 2702042294129232926}
   m_Layer: 0
   m_Name: IceCube_RB
   m_TagString: Player
@@ -140,3 +141,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thugParticles: {fileID: 4199556353133700995, guid: f64655e4e0f8fc9408a76c9f4dba3ccc,
     type: 3}
+--- !u!114 &2702042294129232926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6957789308287948046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7018661dd89b9e40b65de8e7746527c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimumScale: 0.2
+  maxHealth: 100
+  _currentHealth: 0
+  meltingZones: []
+  invincibilityDuration: 5
+  collisionParticles: {fileID: 0}
