@@ -10,6 +10,9 @@ public class IceCubeController : MonoBehaviour
     [SerializeField]
     private float descentSpeed = 1f;
 
+    [SerializeField]
+    private float velocityLimit = 60f;
+
     private float _rotAmount;
     private bool _goingLeft, _goingRight;
 
@@ -61,12 +64,15 @@ public class IceCubeController : MonoBehaviour
             }
 
             // movements
-            _rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
-            _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed));
+            //_rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
+            _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed * Time.deltaTime));
+
+            // Can't descend faster than that value
+            LimitVelocity(velocityLimit);
         }
     }
 
-    private void UpdateSideVelocity(float factor)
+    public void UpdateSideVelocity(float factor)
     {
         _rb.velocity = new Vector3(_rb.velocity.x * factor, _rb.velocity.y, _rb.velocity.z);
     }
@@ -91,6 +97,24 @@ public class IceCubeController : MonoBehaviour
     public void StopSimulation()
     {
         enableSimulation = false;
+    }
+
+    private void LimitVelocity(float limit)
+    {
+        float currentVelocity = GetCurrentVelocity();
+        if(currentVelocity > limit)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, limit);
+        }
+    }
+
+    public void BoostVelocity(float newValue)
+    {
+        float currentVelocity = GetCurrentVelocity();
+        if (currentVelocity < newValue)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, newValue);
+        }
     }
 }
 

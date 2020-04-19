@@ -10,6 +10,7 @@ public class HealthPickUp : Pickable
     public override void Effect(GameObject player)
     {
         player.GetComponent<IceCubeMelt>().currentHealth += health;
+        player.GetComponent<IceCubePickup>().PlayEffect();
         Destroy(gameObject);
     }
 }
