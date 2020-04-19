@@ -10,6 +10,9 @@ public class IceCubeController : MonoBehaviour
     [SerializeField]
     private float descentSpeed = 1f;
 
+    [SerializeField]
+    private float velocityLimit = 60f;
+
     private float _rotAmount;
     private bool _goingLeft, _goingRight;
 
@@ -65,11 +68,11 @@ public class IceCubeController : MonoBehaviour
             _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed * Time.deltaTime));
 
             // Can't descend faster than that value
-            LimitVelocity(50f);
+            LimitVelocity(velocityLimit);
         }
     }
 
-    private void UpdateSideVelocity(float factor)
+    public void UpdateSideVelocity(float factor)
     {
         _rb.velocity = new Vector3(_rb.velocity.x * factor, _rb.velocity.y, _rb.velocity.z);
     }
