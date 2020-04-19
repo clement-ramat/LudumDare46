@@ -63,6 +63,9 @@ public class IceCubeController : MonoBehaviour
             // movements
             //_rb.MoveRotation(Quaternion.AngleAxis(_rotAmount * horizontalSpeed * 15, Vector3.forward));
             _rb.AddForce(new Vector3(horizontalInput * horizontalSpeed, 0, descentSpeed * Time.deltaTime));
+
+            // Can't descend faster than that value
+            LimitVelocity(50f);
         }
     }
 
@@ -91,6 +94,15 @@ public class IceCubeController : MonoBehaviour
     public void StopSimulation()
     {
         enableSimulation = false;
+    }
+
+    private void LimitVelocity(float limit)
+    {
+        float currentVelocity = GetCurrentVelocity();
+        if(currentVelocity > limit)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, limit);
+        }
     }
 }
 
