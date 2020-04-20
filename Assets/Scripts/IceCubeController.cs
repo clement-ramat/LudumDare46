@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class IceCubeController : MonoBehaviour
 {
     private Rigidbody _rb;
@@ -73,6 +73,11 @@ public class IceCubeController : MonoBehaviour
 
             // Can't descend faster than that value
             LimitVelocity(velocityLimit);
+        }
+
+        if(Input.GetKeyDown("escape"))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

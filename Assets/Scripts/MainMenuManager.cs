@@ -21,5 +21,9 @@ public class MainMenuManager : MonoBehaviour
         {
             levelSet.LoadNextScene();
         }
+        else if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+        }
     }
 }

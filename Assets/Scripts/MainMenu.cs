@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour
         {
             onGameStart?.Invoke();
         }
+        else if(Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+        }
     }
 
     public void loadNextScene()
