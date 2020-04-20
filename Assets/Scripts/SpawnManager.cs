@@ -18,6 +18,15 @@ public class SpawnManager : MonoBehaviour
     private bool hideCountdown = false;
     private float hidingFactor = 0;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip beepClip1;
+
+    [SerializeField]
+    private AudioClip beepClip2;
+
 
     void Awake()
     {
@@ -40,15 +49,19 @@ public class SpawnManager : MonoBehaviour
         spawnData.PlayerObject.GetComponent<IceCubeController>().EnableGravity(false);
 
         int count = seconds;
-
+        countdownText.color = new Color(countdownText.color.r, countdownText.color.g, countdownText.color.b, 1);
         while (count > 0)
         {
             countdownText.text = count.ToString();
+            audioSource.clip = beepClip1;
+            audioSource.Play();
             yield return new WaitForSeconds(1);
             count--;
         }
 
         countdownText.text = "GO !";
+        audioSource.clip = beepClip2;
+        audioSource.Play();
         hideCountdown = true;
 
         spawnData.PlayerObject.GetComponent<IceCubeController>().EnableGravity(true);
@@ -69,7 +82,11 @@ public class SpawnManager : MonoBehaviour
             hidingFactor += (Time.deltaTime * 0.75f);
             float alpha = Mathf.Lerp(1, 0, hidingFactor);
             countdownText.color = new Color(countdownText.color.r, countdownText.color.g, countdownText.color.b, alpha);
-            if (alpha <= 0) hideCountdown = false;
+            if (alpha <= 0)
+            {
+                hideCountdown = false;
+                hidingFactor = 0;
+            }
         }
     }
 

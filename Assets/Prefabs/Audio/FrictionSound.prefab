@@ -43,13 +43,13 @@ AudioSource:
   m_GameObject: {fileID: 175683695328561638}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -3243555958321687348, guid: 3916cf6ba0b243b419526f07057e0faa,
+  OutputAudioMixerGroup: {fileID: 4655994962957790700, guid: 3916cf6ba0b243b419526f07057e0faa,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: ee4aa5639851c51428aba8f0421a8dc1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 289fa5f1d6ff3c0489be4c75bb1d8927, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   rbToTrack: {fileID: 0}
   velocityThreshold: 2
   maxVelocity: 10
+  cooldown: 0.2
 --- !u!65 &6983750091373833646
 BoxCollider:
   m_ObjectHideFlags: 0
