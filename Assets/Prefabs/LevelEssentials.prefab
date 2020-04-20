@@ -970,6 +970,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5508463398046369129, guid: 23d6daa32308487458822538431351bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7739584811865460361, guid: 23d6daa32308487458822538431351bc,
         type: 3}
       propertyPath: m_Color.r
@@ -1210,7 +1215,7 @@ PrefabInstance:
     - target: {fileID: 8504815052382354785, guid: 8d0085e104e452b4bae093d72e615262,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8504815052382354811, guid: 8d0085e104e452b4bae093d72e615262,
         type: 3}

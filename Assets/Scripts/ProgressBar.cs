@@ -31,7 +31,8 @@ public class ProgressBar : MonoBehaviour
         if(hudData.spawnPosition != null && hudData.goalPosition != null)
         {
             Debug.Log(1.0f - Vector3.Distance(hudData.iceCubePosition, hudData.goalPosition) / D);
-            progressBar.fillAmount = 1.0f - Vector3.Distance(hudData.iceCubePosition, hudData.goalPosition) / D;
+
+            progressBar.fillAmount =Vector3.Distance(hudData.iceCubePosition, hudData.spawnPosition) / D;
         }
     }
 }
