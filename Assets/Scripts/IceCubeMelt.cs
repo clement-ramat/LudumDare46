@@ -64,7 +64,7 @@ public class IceCubeMelt : MonoBehaviour
     }
 
     [SerializeField]
-    private Text GameOverText;
+    private GameObject GameOverText;
 
 
     private void Start()
@@ -76,7 +76,7 @@ public class IceCubeMelt : MonoBehaviour
 
     public void Reset()
     {
-        GameOverText.enabled = false;
+        GameOverText.SetActive(false);
         inCollisionObstacle.Clear();
         meltingZones.Clear();
         currentHealth = maxHealth;
@@ -155,7 +155,7 @@ public class IceCubeMelt : MonoBehaviour
 
     private void PlayDeathVisuals()
     {
-        GameOverText.enabled = true;
+        GameOverText.SetActive(true);
         GameObject brokenInstance = Instantiate(brokenIceCube, gameObject.transform.position, Quaternion.identity);
         brokenInstance.transform.localScale = transform.localScale;
         gameObject.SetActive(false);
