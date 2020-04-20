@@ -18,6 +18,9 @@ public class GoalManager : MonoBehaviour
     [SerializeField]
     private HUDDataScriptableObject hudData;
 
+    [SerializeField]
+    private ChronoUI chrono;
+
     void Awake()
     {
         if (spawnData == null)
@@ -47,7 +50,8 @@ public class GoalManager : MonoBehaviour
         {
             Debug.Log("le verre n'as pas été placé !!");
         }
-       
+
+        chrono.PauseChrono();
 
         yield return new WaitForSeconds(waitTimeBeforeChangingScene);
 
