@@ -62,6 +62,7 @@ MonoBehaviour:
   levelSet: {fileID: 11400000, guid: 647264c4444a4c943b4f771db6cfad80, type: 2}
   tagToCheck: Player
   waitTimeBeforeChangingScene: 3
+  hudData: {fileID: 11400000, guid: 2f6bf0da93eda344ab743746b4467daf, type: 2}
 --- !u!1001 &8244051174682127681
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class HUDDataScriptableObject : ScriptableObject
 
     public float timeSinceStart;
 
-    public float 
+    public Transform spawnTransform;
+
+    public Transform goalTransform;
 
 }

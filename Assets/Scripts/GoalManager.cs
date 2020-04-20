@@ -15,12 +15,17 @@ public class GoalManager : MonoBehaviour
     [SerializeField]
     private float waitTimeBeforeChangingScene = 3f;
 
+    [SerializeField]
+    private HUDDataScriptableObject hudData;
+
     void Awake()
     {
         if (spawnData == null)
         {
             Debug.LogError("Spawn Data hasn't been specified");
         }
+
+        hudData.goalTransform = this.transform;
     }
 
     private void OnTriggerEnter(Collider other)

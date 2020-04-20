@@ -121,6 +121,18 @@ public class IceCubeController : MonoBehaviour
         }
     }
 
+    public void UpdateFrontVelocity(float newValue)
+    {
+        if (newValue > velocityLimit) newValue = velocityLimit;
+        _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y, newValue);
+    }
+
+    public void UpdateHeightVelocity(float newValue)
+    {
+        if (newValue > (velocityLimit * 0.1f)) newValue = velocityLimit * 0.1f;
+        _rb.velocity = new Vector3(_rb.velocity.x, newValue, _rb.velocity.z);
+    }
+
     public void EnableGravity(bool b)
     {
         if(_rb) _rb.useGravity = b;
