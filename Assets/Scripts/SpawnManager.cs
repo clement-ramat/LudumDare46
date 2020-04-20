@@ -27,6 +27,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField]
     private AudioClip beepClip2;
 
+    [SerializeField]
+    private ChronoUI chrono;
+
 
     void Awake()
     {
@@ -40,6 +43,7 @@ public class SpawnManager : MonoBehaviour
 
     void StartGame()
     {
+        
         StartCoroutine(Countdown(countdownDuration));
     }
 
@@ -47,6 +51,8 @@ public class SpawnManager : MonoBehaviour
     {
         spawnData.PlayerObject.GetComponent<IceCubeController>().EnableSimulation(false);
         spawnData.PlayerObject.GetComponent<IceCubeController>().EnableGravity(false);
+
+        chrono.counterText.alpha = 0;
 
         int count = seconds;
         countdownText.color = new Color(countdownText.color.r, countdownText.color.g, countdownText.color.b, 1);
@@ -63,6 +69,7 @@ public class SpawnManager : MonoBehaviour
         audioSource.clip = beepClip2;
         audioSource.Play();
         hideCountdown = true;
+        chrono.ResetChrono(true);
 
         spawnData.PlayerObject.GetComponent<IceCubeController>().EnableGravity(true);
         spawnData.PlayerObject.GetComponent<IceCubeController>().EnableSimulation(true);

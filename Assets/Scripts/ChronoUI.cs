@@ -41,6 +41,7 @@ public class ChronoUI : MonoBehaviour
 
     public void ResetChrono(bool stillRunning)
     {
+        counterText.alpha = 1;
         StopCoroutine(mCoroutine);
         minutes = 0f;
         seconds = 0f;
