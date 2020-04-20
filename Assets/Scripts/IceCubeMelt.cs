@@ -164,8 +164,10 @@ public class IceCubeMelt : MonoBehaviour
 
     private void BumpPlayer(Collision collision)
     {
-        //_icc.UpdateSideVelocity(collision.relativeVelocity.x * 5);
-        GetComponent<Rigidbody>().velocity = collision.relativeVelocity * 0.5f;
+        Debug.Log(collision.relativeVelocity);
+        _icc.UpdateSideVelocity(collision.relativeVelocity.x * 2);
+        _icc.UpdateHeightVelocity(collision.relativeVelocity.y * -0.5f);
+        _icc.UpdateFrontVelocity(collision.relativeVelocity.z * -0.5f);
     }
 
 
