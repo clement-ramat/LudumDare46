@@ -6,7 +6,7 @@ public class SpeedPickUp : Pickable
 {
     // 50% bonus velocity
     [Header("PickUp")]
-    public float bonus = 1.5f;
+    public float bonus = 3f;
     
     public override void Effect(GameObject player)
     {

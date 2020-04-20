@@ -26,11 +26,14 @@ public class IceCubeMelt : MonoBehaviour
     [SerializeField]
     private GameObject brokenIceCube;
 
+    [SerializeField]
+    private Slider iceJauge;
+
     private IceCubeController _icc;
 
     public UnityEvent OnCollision;
 
-    public float damageOverTime = 0.5f;
+    public float damageOverTime = 5f;
 
     [HideInInspector]
     public float currentHealth
@@ -73,6 +76,8 @@ public class IceCubeMelt : MonoBehaviour
         currentHealth = maxHealth;
         maxScale = transform.localScale.x - minimumScale;
         _icc = GetComponent<IceCubeController>();
+
+        iceJauge.value = 1;
     }
 
     public void Reset()
@@ -102,6 +107,8 @@ public class IceCubeMelt : MonoBehaviour
         {
             PlayDeathVisuals();
         }
+
+        iceJauge.value = currentHealth * 0.01f;
     }
 
     IEnumerator InvincibilityForSeconds(float seconds)
