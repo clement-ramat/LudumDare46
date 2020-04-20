@@ -18,6 +18,9 @@ public class IceCubeController : MonoBehaviour
 
     private bool enableSimulation = true;
 
+    [SerializeField]
+    private HUDDataScriptableObject hudData;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +32,7 @@ public class IceCubeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        hudData.iceCubePosition = this.transform.position;
         if(enableSimulation)
         {
             float horizontalInput = Input.GetAxis("Horizontal");

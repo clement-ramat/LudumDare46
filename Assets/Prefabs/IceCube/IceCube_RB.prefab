@@ -115,6 +115,7 @@ MonoBehaviour:
   horizontalSpeed: 20
   descentSpeed: 0
   velocityLimit: 60
+  hudData: {fileID: 11400000, guid: 2f6bf0da93eda344ab743746b4467daf, type: 2}
 --- !u!54 &1502602866
 Rigidbody:
   m_ObjectHideFlags: 0

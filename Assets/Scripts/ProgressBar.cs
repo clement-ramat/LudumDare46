@@ -19,17 +19,19 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
-        if (hudData.spawnTransform != null && hudData.goalTransform != null)
+        if (hudData.spawnPosition != null && hudData.goalPosition != null)
         {
-            D = Vector3.Distance(hudData.spawnTransform.position, hudData.goalTransform.position);
+            D = Vector3.Distance(hudData.spawnPosition, hudData.goalPosition);
+            Debug.Log(D);
         }
     }
 
     private void Update()
     {
-        if(hudData.spawnTransform != null && hudData.goalTransform != null)
+        if(hudData.spawnPosition != null && hudData.goalPosition != null)
         {
-            progressBar.fillAmount =1.0f - Vector3.Distance(hudData.spawnTransform.position, hudData.goalTransform.position) / D;
+            Debug.Log(1.0f - Vector3.Distance(hudData.iceCubePosition, hudData.goalPosition) / D);
+            progressBar.fillAmount = 1.0f - Vector3.Distance(hudData.iceCubePosition, hudData.goalPosition) / D;
         }
     }
 }

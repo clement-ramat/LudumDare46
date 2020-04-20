@@ -9,7 +9,7 @@ public class SpawnScript : MonoBehaviour
     private HUDDataScriptableObject hudData;
     void Awake()
     {
-        hudData.spawnTransform = this.transform;
+        hudData.spawnPosition = this.transform.position;
     }
 
 

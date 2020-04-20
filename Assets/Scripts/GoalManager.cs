@@ -25,7 +25,7 @@ public class GoalManager : MonoBehaviour
             Debug.LogError("Spawn Data hasn't been specified");
         }
 
-        hudData.goalTransform = this.transform;
+        hudData.goalPosition = this.transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
