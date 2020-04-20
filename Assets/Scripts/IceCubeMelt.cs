@@ -44,14 +44,9 @@ public class IceCubeMelt : MonoBehaviour
             {
                 if (!invincible)
                 {
-                    Debug.Log("took damage");
-
                     _currentHealth = value;
                 }
-                else
-                {
-                    Debug.Log("took damage but invincible");
-                }
+
             }
             else
             {
@@ -114,7 +109,6 @@ public class IceCubeMelt : MonoBehaviour
 
         if (obstacle != null && !inCollisionObstacle.Contains(obstacle))
         {
-            Debug.Log("collision");
             inCollisionObstacle.Add(obstacle);
 
             currentHealth -= obstacle.damage;
@@ -164,7 +158,8 @@ public class IceCubeMelt : MonoBehaviour
 
     private void BumpPlayer(Collision collision)
     {
-        _icc.UpdateSideVelocity(collision.relativeVelocity.x * 5);
+        //_icc.UpdateSideVelocity(collision.relativeVelocity.x * 5);
+        GetComponent<Rigidbody>().velocity = collision.relativeVelocity * 0.5f;
     }
 
 
