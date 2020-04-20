@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pente.unity
     guid: 0a54792e8ff1081409e002b77deab813
+  - enabled: 1
+    path: Assets/Scenes/Pente2.unity
+    guid: 9fd3c6fbf4bb48f4cb3e2e2a94769e53
   m_configObjects: {}
