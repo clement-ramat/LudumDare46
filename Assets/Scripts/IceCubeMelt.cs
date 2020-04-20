@@ -29,6 +29,7 @@ public class IceCubeMelt : MonoBehaviour
 
     public UnityEvent OnCollision;
 
+    public float damageOverTime = 0.5f;
 
     [HideInInspector]
     public float currentHealth
@@ -72,23 +73,31 @@ public class IceCubeMelt : MonoBehaviour
         _icc = GetComponent<IceCubeController>();
     }
 
-    private void OnDisable()
+    public void Reset()
     {
         inCollisionObstacle.Clear();
         meltingZones.Clear();
+        currentHealth = maxHealth;
+        transform.localScale = new Vector3(maxScale + minimumScale, maxScale + minimumScale, maxScale + minimumScale);
     }
 
     public void Update()
     {
+        currentHealth -= damageOverTime * Time.deltaTime;
+
         foreach (MeltingZone meltingZone in meltingZones)
         {
             currentHealth -= meltingZone.damagePerSeconds * Time.deltaTime;
         }
 
-        if (currentHealth != 0)
+        if (currentHealth > 0)
         {
             float scale = minimumScale + (currentHealth / maxHealth * maxScale);
             transform.localScale = new Vector3(scale, scale, scale);
+        }
+        else
+        {
+            PlayDeathVisuals();
         }
     }
 
@@ -119,10 +128,6 @@ public class IceCubeMelt : MonoBehaviour
             if (currentHealth > 0)
             {
                 PlayCollisionVisuals();
-            }
-            else
-            {
-                PlayDeathVisuals();
             }
         }
     }

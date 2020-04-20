@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LevelSet
   m_EditorClassIdentifier: 
   levelStartIndex: 0
-  nbLevels: 2
-  currentLevelIndex: 0
+  nbLevels: 3
+  currentLevelIndex: 1

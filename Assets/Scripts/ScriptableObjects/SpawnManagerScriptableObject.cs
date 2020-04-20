@@ -78,9 +78,8 @@ public class SpawnManagerScriptableObject : ScriptableObject
         playerObject.SetActive(true);
 
         //playerObject.GetComponent<IceCubeController>().Reset();
-
         playerObject.transform.position = CurrentSpawn.transform.position;
-
+        playerObject.GetComponent<IceCubeMelt>().Reset();
         playerObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         playerObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         playerObject.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
