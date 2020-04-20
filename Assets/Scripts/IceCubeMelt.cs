@@ -22,6 +22,8 @@ public class IceCubeMelt : MonoBehaviour
     [SerializeField]
     private GameObject collisionParticles;
 
+    [SerializeField]
+    private GameObject brokenIceCube;
 
     private IceCubeController _icc;
 
@@ -70,6 +72,12 @@ public class IceCubeMelt : MonoBehaviour
         _icc = GetComponent<IceCubeController>();
     }
 
+    private void OnDisable()
+    {
+        inCollisionObstacle.Clear();
+        meltingZones.Clear();
+    }
+
     public void Update()
     {
         foreach (MeltingZone meltingZone in meltingZones)
@@ -114,7 +122,7 @@ public class IceCubeMelt : MonoBehaviour
             }
             else
             {
-                //PlayDeathVisuals();
+                PlayDeathVisuals();
             }
         }
     }
@@ -137,6 +145,16 @@ public class IceCubeMelt : MonoBehaviour
             go.GetComponent<ParticleSystem>().Play();
             Destroy(go, 1);
         }
+    }
+
+    private void PlayDeathVisuals()
+    {
+
+        GameObject brokenInstance = Instantiate(brokenIceCube, gameObject.transform.position, Quaternion.identity);
+        brokenInstance.transform.localScale = transform.localScale;
+        gameObject.SetActive(false);
+
+        //brokenIceCube.GetComponent<BrokenIceExplosion>().Explode();
     }
 
     private void BumpPlayer()
