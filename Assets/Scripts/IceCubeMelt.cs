@@ -44,14 +44,9 @@ public class IceCubeMelt : MonoBehaviour
             {
                 if (!invincible)
                 {
-                    Debug.Log("took damage");
-
                     _currentHealth = value;
                 }
-                else
-                {
-                    Debug.Log("took damage but invincible");
-                }
+
             }
             else
             {
@@ -114,7 +109,6 @@ public class IceCubeMelt : MonoBehaviour
 
         if (obstacle != null && !inCollisionObstacle.Contains(obstacle))
         {
-            Debug.Log("collision");
             inCollisionObstacle.Add(obstacle);
 
             currentHealth -= obstacle.damage;
