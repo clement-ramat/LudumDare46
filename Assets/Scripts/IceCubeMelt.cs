@@ -176,7 +176,10 @@ public class IceCubeMelt : MonoBehaviour
         Debug.Log(collision.relativeVelocity);
         _icc.UpdateSideVelocity(collision.relativeVelocity.x * 2);
         _icc.UpdateHeightVelocity(collision.relativeVelocity.y * 0.5f);
-        _icc.UpdateFrontVelocity(collision.relativeVelocity.z * 0.5f);
+
+        Debug.Log(collision.relativeVelocity.z * 0.5f);
+        float frontVelocity = Mathf.Clamp(collision.relativeVelocity.z * 0.5f, -15, 15);
+        _icc.UpdateFrontVelocity(frontVelocity);
     }
 
 
