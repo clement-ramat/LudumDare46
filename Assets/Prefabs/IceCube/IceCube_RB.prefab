@@ -163,6 +163,8 @@ MonoBehaviour:
   invincibilityDuration: 5
   collisionParticles: {fileID: 5500208828623928649, guid: 8d660cbc5f95b754b843a200160e3979,
     type: 3}
+  brokenIceCube: {fileID: 7730011374143545031, guid: 4787705496f15c14e99d9afe7a0b4f21,
+    type: 3}
   OnCollision:
     m_PersistentCalls:
       m_Calls:
@@ -177,6 +179,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  damageOverTime: 0.5
 --- !u!114 &6226690918491805276
 MonoBehaviour:
   m_ObjectHideFlags: 0

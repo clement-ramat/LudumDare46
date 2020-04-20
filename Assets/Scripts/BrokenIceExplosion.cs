@@ -16,7 +16,7 @@ public class BrokenIceExplosion : MonoBehaviour
     {
         foreach(GameObject part in parts)
         {
-            part.GetComponent<Rigidbody>().AddExplosionForce(forceStrength * multiplier, transform.position + new Vector3(0,-0.5f,0.5f), 5);
+            part.GetComponent<Rigidbody>().AddExplosionForce(forceStrength * multiplier, transform.position + new Vector3(0,0,0.5f), 5);
             StartCoroutine(BecomeNonCollidableAfterSeconds(3));
         }
     }
