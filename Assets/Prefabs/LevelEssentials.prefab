@@ -164,19 +164,11 @@ Transform:
   - {fileID: 4672419966836136117}
   - {fileID: 8605509895127790263}
   - {fileID: 6320627895039161487}
-<<<<<<< HEAD
   - {fileID: 7108077703309550321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7060320710826142628
-=======
-  - {fileID: 636606004901176038}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &6439192633978740634
->>>>>>> b9d035a0b7d67c613ff67dd3140baf23a0213c23
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
