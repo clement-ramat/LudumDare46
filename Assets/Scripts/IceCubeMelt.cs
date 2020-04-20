@@ -114,7 +114,7 @@ public class IceCubeMelt : MonoBehaviour
 
             StartCoroutine(InvincibilityForSeconds(invincibilityDuration));
 
-            BumpPlayer();
+            BumpPlayer(collision);
 
             if (currentHealth > 0)
             {
@@ -157,10 +157,9 @@ public class IceCubeMelt : MonoBehaviour
         //brokenIceCube.GetComponent<BrokenIceExplosion>().Explode();
     }
 
-    private void BumpPlayer()
+    private void BumpPlayer(Collision collision)
     {
-        //float currentVelocity = _icc.GetCurrentVelocity();
-        _icc.UpdateSideVelocity(-10f);
+        _icc.UpdateSideVelocity(collision.relativeVelocity.x * 5);
     }
 
 
