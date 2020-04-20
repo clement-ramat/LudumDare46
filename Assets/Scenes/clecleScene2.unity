@@ -622,6 +622,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelEssentials
       objectReference: {fileID: 0}
+    - target: {fileID: 6039942653809324769, guid: 53738cd9d0a4e5d4789fa2e404eeb45c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -81
+      objectReference: {fileID: 0}
+    - target: {fileID: 6039942653809324769, guid: 53738cd9d0a4e5d4789fa2e404eeb45c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 489.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7900813450493544509, guid: 53738cd9d0a4e5d4789fa2e404eeb45c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -700,6 +710,11 @@ PrefabInstance:
     - target: {fileID: 8201509247158684559, guid: 53738cd9d0a4e5d4789fa2e404eeb45c,
         type: 3}
       propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8337418626417219614, guid: 53738cd9d0a4e5d4789fa2e404eeb45c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
