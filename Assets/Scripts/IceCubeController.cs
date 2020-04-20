@@ -75,7 +75,7 @@ public class IceCubeController : MonoBehaviour
     public void UpdateSideVelocity(float factor)
     {
         float newSideVelocity = _rb.velocity.x * factor;
-        float sideLimit = velocityLimit * 0.15f;
+        float sideLimit = velocityLimit * 0.2f;
 
         if (newSideVelocity > sideLimit) newSideVelocity = sideLimit;
         if (newSideVelocity < (sideLimit * -1)) newSideVelocity = sideLimit;
@@ -88,8 +88,6 @@ public class IceCubeController : MonoBehaviour
         // descent velocity, not taking into account horizontal velocity
         Vector3 v = new Vector3(0, 0 , _rb.velocity.z);
         return v.magnitude;
-
-        //return _rb.velocity.magnitude;
     }
 
     public void FullReset()
@@ -125,7 +123,7 @@ public class IceCubeController : MonoBehaviour
 
     public void EnableGravity(bool b)
     {
-        _rb.useGravity = b;
+        if(_rb) _rb.useGravity = b;
     }
 }
 
