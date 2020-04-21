@@ -31,7 +31,7 @@ public class SpawnManager : MonoBehaviour
     private ChronoUI chrono;
 
 
-    void Awake()
+    void Start()
     {
         if (spawnData == null)
         {
@@ -40,6 +40,8 @@ public class SpawnManager : MonoBehaviour
 
         StartGame();
     }
+
+
 
     void StartGame()
     {
